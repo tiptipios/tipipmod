@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Copy Button with Timer</title>
+  <title>Get Key Free</title>
   <!-- Google Font Link -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
@@ -33,71 +33,33 @@
       white-space: nowrap;
       background: #4A98F7;
       transition: all 0.2s ease;
+      font-size: 1.5rem;
     }
     .copy-btn:hover {
       background: #2382f6;
-    }
-    .copy-btn.timer {
-      color: #000;
-      background: none;
-      transition: none;
-      font-size: 1.6rem;
-      pointer-events: none;
-    }
-    .copy-btn.timer b {
-      color: #4A98F7;
-      padding: 0 8px;
     }
     .copy-btn .icon {
       font-size: 2rem;
     }
     .copy-btn .text {
-      font-size: 1.5rem;
       padding-left: 10px;
     }
   </style>
 </head>
 <body>
-  <button class="copy-btn" data-timer="10">
-    <span class="icon material-symbols-rounded">content_copy</span>
-    <span class="text">Lấy PassWord </span>
+  <button class="copy-btn">
+    <span class="icon material-symbols-rounded">open_in_new</span>
+    <span class="text">Get Key Free</span>
   </button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const copyBtn = document.querySelector(".copy-btn");
-      const textToCopy = "TipTipfreeAllios24012025"; // Văn bản cần sao chép
+      const url = "https://oklink.cfd/Passtiptip"; // Thay thế bằng link bạn muốn mở
 
-      const initTimer = () => {
-        if (copyBtn.classList.contains("disable-timer")) {
-          navigator.clipboard.writeText(textToCopy).then(() => {
-            copyBtn.innerText = "Đã Copy Pass !";
-          });
-          return;
-        }
-
-        let timer = copyBtn.dataset.timer;
-        copyBtn.classList.add("timer");
-        copyBtn.innerHTML = `Copying in <b>${timer}</b> seconds`;
-
-        const initCounter = setInterval(() => {
-          if (timer > 0) {
-            timer--;
-            return copyBtn.innerHTML = `Copying in <b>${timer}</b> seconds`;
-          }
-          clearInterval(initCounter);
-          navigator.clipboard.writeText(textToCopy).then(() => {
-            copyBtn.innerText = "Text Copied!";
-          });
-
-          setTimeout(() => {
-            copyBtn.classList.replace("timer", "disable-timer");
-            copyBtn.innerHTML = `<span class="icon material-symbols-rounded">content_copy</span>
-                                 <span class="text"> Copy PassWord !</span>`;
-          }, 300);
-        }, 100);
-      };
-      copyBtn.addEventListener("click", initTimer);
+      copyBtn.addEventListener("click", () => {
+        window.open(url, "_blank"); // Mở link ở tab mới
+      });
     });
   </script>
 </body>
