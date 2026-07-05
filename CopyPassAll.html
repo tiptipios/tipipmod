@@ -1,66 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Key Free</title>
-  <!-- Google Font Link -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      display: flex;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      background: #E3F2FD;
-    }
-    .copy-btn {
-      outline: none;
-      border: none;
-      color: #fff;
-      display: flex;
-      cursor: pointer;
-      padding: 16px 25px;
-      border-radius: 15px;
-      align-items: center;
-      white-space: nowrap;
-      background: #4A98F7;
-      transition: all 0.2s ease;
-      font-size: 1.5rem;
-    }
-    .copy-btn:hover {
-      background: #2382f6;
-    }
-    .copy-btn .icon {
-      font-size: 2rem;
-    }
-    .copy-btn .text {
-      padding-left: 10px;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Key Free</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: #E3F2FD;
+        }
+
+        .copy-btn {
+            outline: none;
+            border: none;
+            color: #fff;
+            display: flex;
+            cursor: pointer;
+            padding: 16px 25px;
+            border-radius: 15px;
+            align-items: center;
+            white-space: nowrap;
+            background: #4A98F7;
+            transition: all 0.2s ease;
+            font-size: 1.5rem;
+        }
+
+        .copy-btn:hover {
+            background: #2382f6;
+        }
+
+        .copy-btn .icon {
+            font-size: 2rem;
+        }
+
+        .copy-btn .text {
+            padding-left: 10px;
+        }
+    </style>
 </head>
+
 <body>
-  <button class="copy-btn">
-    <span class="icon material-symbols-rounded">open_in_new</span>
-    <span class="text">Get Key Free</span>
-  </button>
+    <button class="copy-btn">
+        <span class="icon material-symbols-rounded">open_in_new</span>
+        <span class="text">Get Key Free</span>
+    </button>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const copyBtn = document.querySelector(".copy-btn");
-      const url = "https://oklink2.online/Ai3J"; // Thay thế bằng link bạn muốn mở
+    <script>
+        const _d = atob;
+        const _a = "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3RpcHRpcGlvcy9jaGFudGh1aG9pL3JlZnMvaGVhZHMvbWFpbi9wYXNzd29yZC5lbmNzd29yZC5lbmM=";
+        const _b = "aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3RpcHRpcGlvcy9jaGFudGh1aG9pQG1haW4vcGFzc3dvcmQuZW5jc3dvcmQuZW5j";
+        const _c = "aHR0cHM6Ly92dW90bGluay5uZXQvc3Q/YXBpPTRlMmI2NzJiZjJhOGJhOGVhZDc0MmI0ZjljMDdkYjdlNjkwNTA1YTImdXJsPWh0dHBzOi8vdGhlc3Bpa2Vjcm9zcy5wYWdlcy5kZXYva2V5P2s9";
 
-      copyBtn.addEventListener("click", () => {
-        window.open(url, "_blank"); // Mở link ở tab mới
-      });
-    });
-  </script>
+        let cachedKey = null;
+
+        async function fetchKey() {
+            if (cachedKey) return cachedKey;
+            try {
+                const r = await fetch(_d(_a) + "?t=" + Date.now());
+                if (r.ok) { cachedKey = (await r.text()).trim(); return cachedKey; }
+            } catch (_) { }
+            const r2 = await fetch(_d(_b) + "?t=" + Date.now());
+            if (!r2.ok) throw new Error("Lỗi HTTP " + r2.status);
+            cachedKey = (await r2.text()).trim();
+            return cachedKey;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const btn = document.querySelector(".copy-btn");
+            fetchKey().catch(() => { });
+            btn.addEventListener("click", async () => {
+                try {
+                    btn.disabled = true;
+                    btn.querySelector(".text").textContent = "Đang lấy key...";
+                    const key = await fetchKey();
+                    window.open(_d(_c) + encodeURIComponent(key), "_blank");
+                } catch (e) {
+                    alert("Lỗi: " + e.message);
+                } finally {
+                    btn.disabled = false;
+                    btn.querySelector(".text").textContent = "Get Key Free";
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
